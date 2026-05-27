@@ -172,19 +172,19 @@ device_register --> telemetry_ingest --> alert_rule_create
 
 | Feature | AWS IoT Core | Azure IoT Hub | GCP IoT | **Us** |
 |---------|:-:|:-:|:-:|:-:|
-| Device registry | Yes | Yes | Yes | Yes |
-| Telemetry ingestion | Yes | Yes | Yes | Yes |
-| Remote commands | Yes | Yes | Yes | Yes |
-| Alert rules | Yes | Yes | Yes | Yes |
-| Digital twins | Yes | Yes | No | Yes |
-| Fleet management | Yes | Yes | No | Yes |
-| OTA updates | Yes | Yes | No | Yes |
-| Geofencing | No | No | No | Yes |
-| Auto-alert on ingest | No | No | No | Yes |
-| Drift detection | No | No | No | Yes |
-| Zero config | No | No | No | Yes |
-| Open source | No | No | No | Yes |
-| No cloud dependency | No | No | No | Yes |
+| Device registry | ✅ | ✅ | ✅ | ✅ |
+| Telemetry ingestion | ✅ | ✅ | ✅ | ✅ |
+| Remote commands | ✅ | ✅ | ✅ | ✅ |
+| Alert rules | ✅ | ✅ | ✅ | ✅ |
+| Digital twins | ✅ | ✅ | ❌ | ✅ |
+| Fleet management | ✅ | ✅ | ❌ | ✅ |
+| OTA updates | ✅ | ✅ | ❌ | ✅ |
+| Geofencing | ❌ | ❌ | ❌ | ✅ |
+| Auto-alert on ingest | ❌ | ❌ | ❌ | ✅ |
+| Drift detection | ❌ | ❌ | ❌ | ✅ |
+| Zero config | ❌ | ❌ | ❌ | ✅ |
+| Open source | ❌ | ❌ | ❌ | ✅ |
+| No cloud dependency | ❌ | ❌ | ❌ | ✅ |
 
 ## Error Codes
 
