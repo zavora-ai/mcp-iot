@@ -1,0 +1,15 @@
+[server]
+name = "mcp-iot"
+version = "1.0.0"
+description = "IoT device management — telemetry, commands, alerts, digital twins, fleet management, OTA updates, geofencing"
+author = "Zavora AI <engineering@zavora.ai>"
+license = "Apache-2.0"
+repository = "https://github.com/zavora-ai/mcp-iot"
+risk_level = "medium"
+
+[capabilities]
+tools = true
+resources = false
+prompts = false
+
+[credentials]
