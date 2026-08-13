@@ -1,6 +1,6 @@
 server_id = "mcp_iot"
 display_name = "Iot"
-version = "1.0.0"
+version = "1.1.0"
 domain = "iot"
 sdk_version = "0.2.0"
 risk_level = "critical"
