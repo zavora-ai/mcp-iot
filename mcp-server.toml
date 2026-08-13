@@ -1,15 +1,165 @@
-[server]
-name = "mcp-iot"
-version = "1.0.0"
-description = "IoT device management — telemetry, commands, alerts, digital twins, fleet management, OTA updates, geofencing"
-author = "Zavora AI <engineering@zavora.ai>"
-license = "Apache-2.0"
-repository = "https://github.com/zavora-ai/mcp-iot"
-risk_level = "medium"
+server_id = "mcp_iot"
+display_name = "Iot"
+version = "1.1.0"
+domain = "iot"
+sdk_version = "0.2.0"
+risk_level = "critical"
+writes_allowed = "gated"
+transports = ["stdio"]
+credentials = []
+governance_gates = []
+environments = ["development", "staging", "production"]
 
-[capabilities]
-tools = true
-resources = false
-prompts = false
+[[tools]]
+name = "device_register"
+description = "Register a new IoT device (sensor, actuator, gateway, edge). Returns device ID."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
 
-[credentials]
+[[tools]]
+name = "device_list"
+description = "List all registered IoT devices with status summary."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "device_get"
+description = "Get device details including twin state and recent telemetry."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "device_decommission"
+description = "Decommission a device (set offline, remove from fleets)."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "telemetry_ingest"
+description = "Ingest telemetry data point(s) from a device. Metrics: temperature, humidity, pressure, voltage, etc."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "telemetry_query"
+description = "Query telemetry history for a device. Optional: filter by metric, limit results."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "command_send"
+description = "Send a remote command to a device (reboot, configure, update_firmware, set_interval, calibrate)."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "command_list"
+description = "List commands sent to a device with their execution status."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "alert_rule_create"
+description = "Create an alert rule (e.g., temperature > 80, humidity < 20). Conditions: gt, lt, gte, lte, eq."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "alert_rule_list"
+description = "List all alert rules."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "alert_list"
+description = "List triggered alerts (breaches). Shows device, metric, value vs threshold."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "twin_update"
+description = "Update device digital twin desired state. Device will reconcile reported vs desired."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "twin_get"
+description = "Get device digital twin (reported vs desired state, drift detection)."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "fleet_create"
+description = "Create a fleet group (logical grouping of devices for bulk operations)."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "fleet_list"
+description = "List all fleet groups."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "fleet_command"
+description = "Send a command to all devices in a fleet (bulk reboot, configure, update)."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "ota_firmware_create"
+description = "Register a firmware version for OTA updates."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "ota_deploy"
+description = "Deploy firmware to devices (OTA update). Tracks rollout status."
+risk_class = "production_deployment"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "ota_list"
+description = "List OTA deployments and their status."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "geofence_create"
+description = "Create a geofence (circular zone). Devices entering/leaving trigger alerts."
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "geofence_check"
+description = "Check if a device position is inside/outside its geofences. Returns breach status."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "dashboard"
+description = "IoT dashboard summary: device counts by status, alert count, telemetry rate, fleet count."
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
