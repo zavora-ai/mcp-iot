@@ -2,6 +2,7 @@
 name = "mcp-iot"
 version = "1.0.0"
 edition = "2021"
+rust-version = "1.94.1"
 description = "MCP server for IoT device management — telemetry, commands, alerts, digital twins, fleet management, OTA updates, geofencing"
 license = "Apache-2.0"
 repository = "https://github.com/zavora-ai/mcp-iot"
@@ -14,7 +15,7 @@ path = "src/main.rs"
 
 [dependencies]
 rmcp = { version = "3.1.2", features = ["server", "transport-io", "macros"] }
-adk-mcp-sdk = "0.1"
+adk-mcp-sdk = { version = "0.2.0", git = "https://github.com/zavora-ai/adk-mcp-sdk.git", rev = "4dac4301441a8a51a042fd66cc1798f0ec3e3f55" }
 tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

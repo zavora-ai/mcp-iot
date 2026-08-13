@@ -84,7 +84,7 @@ impl IoTServer {
 fn short_id() -> String { uuid::Uuid::new_v4().to_string()[..8].to_string() }
 fn now() -> String { chrono::Utc::now().to_rfc3339() }
 
-#[tool_router(server_handler)]
+#[tool_router]
 impl IoTServer {
     // === Device Registry ===
 
@@ -343,4 +343,11 @@ impl IoTServer {
         let deployment_count = self.deployments.lock().unwrap().len();
         json!({"devices": {"total": devices.len(), "online": online, "offline": offline, "decommissioned": decommissioned}, "telemetry_points": telemetry_count, "alerts_triggered": alert_count, "active_rules": self.alert_rules.lock().unwrap().iter().filter(|r| r.active).count(), "fleets": fleet_count, "ota_deployments": deployment_count}).to_string()
     }
+}
+
+adk_mcp_sdk::mcp_2026_server! {
+    server: IoTServer,
+    task_tools: ["fleet_create", "fleet_command", "ota_deploy"],
+    approval_tools: [],
+    cache_ttl_ms: 60_000,
 }
